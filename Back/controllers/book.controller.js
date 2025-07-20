@@ -57,7 +57,7 @@ exports.createBook = async (req, res, next) => {
 
   // If the user has not rated the book, empty the table (useful so that the user can still rate his book later)
   if(bookObject.ratings[0].grade === 0){
-  bookObject.ratings = []
+    bookObject.ratings = []
   }
 
   const filename = req.file.filename
@@ -73,7 +73,8 @@ exports.createBook = async (req, res, next) => {
   try {
     await book.save()
     res.status(201).json({ message: 'Book saved' })
-  } catch (error) {      
+  } catch (error) {   
+    console.error(error)   
       fs.unlinkSync(`images/${filename}`)
     res.status(400).json({ error })
   }

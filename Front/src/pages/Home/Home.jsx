@@ -29,7 +29,7 @@ function Home() {
         <header className={styles.head}>
           <h1>Our Books</h1>
           <p>to read and reread</p>
-          <Link to="/Ajouter" className="button">+ Add a Book</Link>
+          <Link to="/Add" className="button">+ Add a Book</Link>
         </header>
         <section className={styles.bookList}>
           {loading ? <h1>Chargement</h1> : displayBooks()}

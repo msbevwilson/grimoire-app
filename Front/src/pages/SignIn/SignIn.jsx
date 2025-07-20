@@ -31,10 +31,13 @@ function SignIn({ setUser }) {
         },
       });
       if (!response?.data?.token) {
-        setNotification({ error: true, message: 'Une erreur est survenue' });
+        setNotification({ error: true, message: 'An error has occurred' });
         console.log('Something went wrong during signing in: ', response);
       } else {
         storeInLocalStorage(response.data.token, response.data.userId);
+        console.log('Successfully signed in, token: ', response.data.token);
+        console.log('Successfully signed in, userId: ', response.data.userId);
+        console.log('Successfully signed in using local storage');
         setUser(response.data);
         navigate('/');
       }

@@ -16,9 +16,17 @@ mongoose.connect('mongodb+srv://beverlyDBUser:vnuFPUB63gYQWst@cluster0.p80kybq.m
   });
 
 // Headers & CORS
-const helmet = require('helmet')
+//const helmet = require('helmet')
+const cors = require('cors');
 
-app.use(helmet({crossOriginResourcePolicy: false,}))
+//app.use(helmet({crossOriginResourcePolicy: false,}))
+////app.use(cors());
+
+app.use(cors({
+    origin: 'http://localhost:4000',
+    credentials: true,
+}));
+app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')

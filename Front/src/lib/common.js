@@ -131,15 +131,16 @@ export async function addBook(data) {
   bodyFormData.append('book', JSON.stringify(book));
   bodyFormData.append('image', data.file[0]);
 
+  const token = getFromLocalStorage('token');
+  //const token = 'YOUR_VALID_AUTH_TOKEN'; // Replace with how you obtain the token
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  };
+
   try {
-    return await axios({
-      method: 'post',
-      url: `${API_ROUTES.BOOKS}`,
-      data: bodyFormData,
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
+    return await axios.post(`${API_ROUTES.BOOKS}`, bodyFormData, config);
   } catch (err) {
     console.error(err);
     return { error: true, message: err.message };

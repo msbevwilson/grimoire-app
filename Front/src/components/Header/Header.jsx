@@ -19,8 +19,8 @@ function Header({ user, setUser }) {
         <img src={Logo} alt="logo mpm vieu grimoire" />
         <ul>
           <li><NavLink to="/" end className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Welcome</NavLink></li>
-          <li><NavLink to="/Ajouter" className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Add a Book</NavLink></li>
-          <li>{!user ? <NavLink to="/Connection" className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Log in</NavLink> : <span tabIndex={0} role="button" onKeyUp={disconnect} onClick={disconnect}>Se déconnecter</span> }</li>
+          <li><NavLink to="/Add" className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Add a Book</NavLink></li>
+          <li>{!user ? <NavLink to="/Connection" className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Log in</NavLink> : <span tabIndex={0} role="button" onKeyUp={disconnect} onClick={disconnect}>Log out</span> }</li>
         </ul>
       </div>
     </header>
